@@ -1,1 +1,1 @@
-web: nuxt start -p $PORT
+web: npm run build && npm run start
