@@ -1,0 +1,21 @@
+{
+  "name": "Doricus",
+  "version": "1.0.0",
+  "description": "Your preferred construction communication platform!",
+  "author": "belgianMuscle",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@mdi/js": "^5.3.45",
+    "nuxt": "^2.0.0",
+    "vuelidate": "^0.7.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
