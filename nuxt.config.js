@@ -41,7 +41,6 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/vuetify',
   ],
   /*
   ** vuetify module configuration
