@@ -32,16 +32,55 @@ export default {
   plugins: [
   ],
   /*
+  ** Router
+  */
+  router: {
+    middleware: ['auth']
+  },
+  /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+  /*
+  ** Environment variables
+  */
+
+  /*
+  ** Axxios modules
+  */
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:5000'
+  },
+  /*
+  ** Auth
+  */
+  auth: {
+    redirect: {
+      login: '/', // redirect user when not connected
+      logout: '/',
+      //home: '/projects',
+      callback: '/projects'
+    },
+    strategies: {
+      local: false,
+      auth0: {
+        domain: process.env.AUTH0_DOMAIN || 'belgianmuscle.auth0.com',
+        client_id: process.env.AUTH0_CLIENT || 'wDLuwFE5xkwMsZ6blZbxrBMGquv1E9tK',
+        audience: process.env.AUTH0_AUDIENCE || 'https://doricus.heroku.com/'
+      }
+    }
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -70,7 +109,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }

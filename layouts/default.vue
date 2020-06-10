@@ -18,22 +18,20 @@
       <v-toolbar-title v-text="title" />
       <v-spacer></v-spacer>
 
-      <v-btn href="/projects" text v-show="$vuetify.breakpoint.mdAndUp">
+      <v-btn v-if="$auth.loggedIn" to="/projects" text v-show="$vuetify.breakpoint.mdAndUp">
         Projects
       </v-btn>
 
-      <v-btn href="/account" text v-show="$vuetify.breakpoint.mdAndUp">
+      <v-btn v-if="$auth.loggedIn" to="/account" text v-show="$vuetify.breakpoint.mdAndUp">
         Account
       </v-btn>
 
-      <v-btn href="/logout" text>
-        Log Out
-      </v-btn>
+      <v-btn v-if="$auth.loggedIn" @click="logout()" text>Log Out</v-btn>
+      <v-btn v-else @click="$auth.loginWith('auth0')" text>Log In</v-btn>
+
     </v-app-bar>
     <v-content class="teal lighten-5">
-      <v-container>
         <nuxt />
-      </v-container>
     </v-content>
     <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
@@ -43,6 +41,7 @@
 
 <script>
 export default {
+  middleware: ['auth','get-account'],
   data() {
     return {
       dark:true,
@@ -71,6 +70,12 @@ export default {
       rightDrawer: false,
       title: "Doricus"
     };
+  },
+  methods: {
+    async logout(){
+      await this.$auth.logout()
+      window.location = 'https://belgianmuscle.auth0.com/v2/logout?client_id=wDLuwFE5xkwMsZ6blZbxrBMGquv1E9tK&returnTo=http%3A%2F%2Flocalhost:3000'
+    }
   }
 };
 </script>

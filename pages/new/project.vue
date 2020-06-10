@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1>Create new project</h1>
-    <v-form ref="projectForm" class="ma-6 pb-4">
+    <v-form ref="projectForm" class="ma-6 pb-4" @submit.prevent="createProject">
       <v-text-field v-model="title" :counter="35" label="Title" solo></v-text-field>
       <v-text-field v-model="image_url" label="Image URL" solo></v-text-field>
       <v-textarea v-model="description" :counter="520" label="Description" solo></v-textarea>
@@ -101,7 +101,7 @@
         </v-list-item>
       </v-list>
 
-      <v-btn color="primary" class="mt-6 mr-4" @click="submit">Create</v-btn>
+      <v-btn type="submit" color="primary" class="mt-6 mr-4">Create</v-btn>
       <v-btn @click="clear" class="mt-6" text>cancel</v-btn>
     </v-form>
   </v-container>
@@ -145,18 +145,49 @@ export default {
   },
   watch: {
     sdate(val) {
-      this.start_date = this.formatDate(this.date);
+      this.start_date = this.formatDate(this.sdate);
     },
     edate(val) {
       this.proj_end_date = this.formatDate(this.edate);
     }
   },
   methods: {
-    submit() {},
     clear() {
       this.title = "";
-      this.contnet = "";
-      this.newVisible = false;
+      this.image_url = "";
+      this.description = "";
+      this.start_date = "";
+      this.proj_end_date = "";
+      this.address = "";
+      this.builder = "";
+      this.customer = "";
+      this.builders = [];
+      this.customers = [];
+      this.sdate = new Date().toISOString().substr(0, 10);
+      this.edate = new Date().toISOString().substr(0, 10);
+      this.start_date_menu = false;
+      this.proj_end_date_menu = false;
+    },
+    async createProject(){
+      const config = {
+        headers: { "content-type": "application/json" }
+      };
+
+      let projectData = { project:{
+        title: this.title,
+        description: this.description,
+        address: this.address,
+        start_date: this.start_date,
+        proj_end_date: this.proj_end_date,
+        act_end_date: '12/31/9999'
+      }};
+
+      try {
+        let response = await this.$axios.$post("/projects", projectData, config);
+        this.$router.push("/projects");
+      } catch (e) {
+        console.log(e);
+      }
     },
     addCustomer() {
       if (this.customer != "") {

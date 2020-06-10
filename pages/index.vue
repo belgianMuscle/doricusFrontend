@@ -1,6 +1,6 @@
 <template>
-  <v-container grid-list-md>
-    <v-jumbotron color="primary" class="mt-12">
+  <v-container fluid>
+    <v-content color="primary" class="mt-12">
       <v-container fill-height>
         <v-layout align-center text-center>
           <v-flex>
@@ -11,7 +11,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </v-jumbotron>
+    </v-content>
     <v-row class="mt-12">
       <v-col>
         <h3>Architect</h3>
@@ -30,23 +30,28 @@
       </v-col>
     </v-row>
     <v-row class="mt-12">
-        <v-col class="text-center">
+      <v-col v-if="$auth.loggedIn" class="text-center">
+        <h3>Check out your projects now</h3>
+        <p>Welcome back, go ahead and check out your projects!</p>
+        <v-btn color="primary" nuxt to="/projects">See projects</v-btn>
+      </v-col>
+      <v-col v-else class="text-center">
         <h3>Start Now</h3>
         <p>Log in to your account or signup now and start tracking your project's progress!</p>
-        <v-btn color="primary" nuxt to="/projects">Log In</v-btn>
-        </v-col>
+        <v-btn color="primary" @click="$auth.loginWith('auth0')">Log In</v-btn>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-  layout: "login"
+  auth: false
 };
 </script>
 
 <style>
 .container {
-    width:900px;
+  width: 900px;
 }
 </style>
