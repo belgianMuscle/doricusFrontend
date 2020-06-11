@@ -3,27 +3,25 @@
     <v-content color="primary" class="mt-12">
       <v-container fill-height>
         <v-layout align-center text-center>
-          <v-flex>
             <h3 class="display-3">Welcome to Doricus</h3>
-            <span
-              class="subheading"
-            >Your preferred platform for tracking your construction progress!</span>
-          </v-flex>
+            <span class="subheading">
+              Your preferred platform for tracking your construction progress!
+            </span>
         </v-layout>
       </v-container>
     </v-content>
     <v-row class="mt-12">
-      <v-col>
+      <v-col cols="4">
         <h3>Architect</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
       </v-col>
-      <v-col>
+      <v-col cols="4">
         <h3>Builder</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
       </v-col>
-      <v-col>
+      <v-col cols="4">
         <h3>Customer</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
