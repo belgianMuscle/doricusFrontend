@@ -60,7 +60,7 @@ export default {
   ** Axxios modules
   */
   axios: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5000'
+    baseURL: process.env.BASE_URL || 'https://doricus-backend.herokuapp.com'  //'http://localhost:5000'
   },
   /*
   ** Auth

@@ -55,11 +55,11 @@ export default {
       };
 
       accountData.member = this.account;
-
+      console.log(accountData.member);
       try {
         let response = {};
         if (this.account.id == "" || this.account.id == null) {
-          response = await this.$axios.$post("/members", accountData, config);
+          response = await this.$axios.$post("/members", accountData, config).catch(e => { console.log(e) });
         } else {
           response = await this.$axios.$patch(
             "/members/" + this.account.id,
