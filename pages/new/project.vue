@@ -20,7 +20,7 @@
               <v-text-field
                 v-model="start_date"
                 label="Start Date"
-                hint="MM/DD/YYYY format"
+                hint="YYYY-MM-DD format"
                 persistent-hint
                 @blur="sdate = parseDate(start_date)"
                 v-on="on"
@@ -45,7 +45,7 @@
               <v-text-field
                 v-model="proj_end_date"
                 label="Projected End Date"
-                hint="MM/DD/YYYY format"
+                hint="YYYY-MM-DD format"
                 persistent-hint
                 @blur="edate = parseDate(proj_end_date)"
                 v-on="on"
@@ -179,7 +179,7 @@ export default {
         address: this.address,
         start_date: this.start_date,
         proj_end_date: this.proj_end_date,
-        act_end_date: '12/31/9999'
+        act_end_date: '9999-12-31'
       }};
 
       try {
@@ -211,12 +211,12 @@ export default {
       if (!date) return null;
 
       const [year, month, day] = date.split("-");
-      return `${month}/${day}/${year}`;
+      return `${month}-${day}-${year}`;
     },
     parseDate(date) {
       if (!date) return null;
 
-      const [month, day, year] = date.split("/");
+      const [month, day, year] = date.split("-");
       return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     }
   }
