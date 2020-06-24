@@ -75,9 +75,9 @@ export default {
     strategies: {
       local: false,
       auth0: {
-        domain: process.env.AUTH0_DOMAIN || 'belgianmuscle.auth0.com',
-        client_id: process.env.AUTH0_CLIENT || 'wDLuwFE5xkwMsZ6blZbxrBMGquv1E9tK',
-        audience: process.env.AUTH0_AUDIENCE || 'https://doricus.heroku.com/'
+        domain: process.env.AUTH0_DOMAIN,
+        client_id: process.env.AUTH0_CLIENT,
+        audience: process.env.AUTH0_AUDIENCE
       }
     }
   },
