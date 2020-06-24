@@ -176,6 +176,7 @@ export default {
       let projectData = { project:{
         title: this.title,
         description: this.description,
+        image_url: this.image_url,
         address: this.address,
         start_date: this.start_date,
         proj_end_date: this.proj_end_date,

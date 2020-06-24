@@ -1,30 +1,32 @@
 <template>
   <v-container fluid>
-    <v-content color="primary" class="mt-12">
-      <v-container fill-height>
-        <v-layout align-center text-center>
-            <h3 class="display-3">Welcome to Doricus</h3>
-            <span class="subheading">
-              Your preferred platform for tracking your construction progress!
-            </span>
-        </v-layout>
-      </v-container>
+    <v-content color="primary" class="mt-12" >
+      <v-row>
+        <v-col>
+        <h3 class="display-3 text-center">Welcome to Doricus</h3>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="text-center">
+        <span class="subheading text-center">Your preferred platform for tracking your construction progress!</span>
+        </v-col>
+      </v-row>
     </v-content>
     <v-row class="mt-12">
       <v-col cols="4">
         <h3>Architect</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <p>Manage your building portfolio and manage the ongoing construction.</p>
+        <p>Communicate with Builders and Customers to ensure everyone is up-to-date with the latest progress!</p>
       </v-col>
       <v-col cols="4">
         <h3>Builder</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <p>Stay connected with your Architect and Customers during the construction.</p>
+        <p>Initiate immediate communication with everyone to provide progress status and challenges/accomplishments!</p>
       </v-col>
       <v-col cols="4">
         <h3>Customer</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <p>Stay connected with your ongoing project while waiting for it to be completed.</p>
+        <p>Always be informed with the latest updates and provide input whenever needed!</p>
       </v-col>
     </v-row>
     <v-row class="mt-12">
