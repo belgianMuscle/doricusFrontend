@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" fixed app v-show="$vuetify.breakpoint.smAndDown">
+    <v-navigation-drawer v-if="$auth.loggedIn && $vuetify.breakpoint.smAndDown" v-model="drawer" :mini-variant="miniVariant" fixed app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
@@ -14,9 +14,14 @@
     </v-navigation-drawer>
 
     <v-app-bar fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-show="$vuetify.breakpoint.smAndDown" /> 
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="$auth.loggedIn" v-show="$vuetify.breakpoint.smAndDown" /> 
       <v-toolbar-title v-text="title" />
       <v-spacer></v-spacer>
+
+
+      <v-btn v-if="$auth.loggedIn" to="/" text v-show="$vuetify.breakpoint.mdAndUp">
+        Home
+      </v-btn>
 
       <v-btn v-if="$auth.loggedIn" to="/projects" text v-show="$vuetify.breakpoint.mdAndUp">
         Projects
@@ -50,19 +55,19 @@ export default {
       fixed: false,
       items: [
         {
-          icon: "mdi-apps",
+          icon: "mdi-home",
+          title: "Home",
+          to: "/",
+        },
+        {
+          icon: "mdi-domain",
           title: "Projects",
           to: "/projects"
         },
         {
-          icon: "mdi-chart-bubble",
-          title: "About",
-          to: "/about"
-        },
-        {
-          icon: "mdi-chart-bubble",
-          title: "Contact",
-          to: "/contact"
+          icon: "mdi-account",
+          title: "Account",
+          to: "/account"
         }
       ],
       miniVariant: false,

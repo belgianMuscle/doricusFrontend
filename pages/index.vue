@@ -13,17 +13,17 @@
       </v-row>
     </v-content>
     <v-row class="mt-12">
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <h3>Architect</h3>
         <p>Manage your building portfolio and manage the ongoing construction.</p>
         <p>Communicate with Builders and Customers to ensure everyone is up-to-date with the latest progress!</p>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <h3>Builder</h3>
         <p>Stay connected with your Architect and Customers during the construction.</p>
         <p>Initiate immediate communication with everyone to provide progress status and challenges/accomplishments!</p>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <h3>Customer</h3>
         <p>Stay connected with your ongoing project while waiting for it to be completed.</p>
         <p>Always be informed with the latest updates and provide input whenever needed!</p>
