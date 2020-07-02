@@ -39,7 +39,7 @@
         <nuxt />
     </v-content>
     <v-footer :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }} by belgianMuscle</span>
     </v-footer>
   </v-app>
 </template>

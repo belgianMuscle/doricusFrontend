@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-content color="primary" class="mt-12" >
+    <v-content color="primary" class="mt-4" >
       <v-row>
         <v-col>
         <h3 class="display-3 text-center">Welcome to Doricus</h3>
@@ -29,7 +29,7 @@
         <p>Always be informed with the latest updates and provide input whenever needed!</p>
       </v-col>
     </v-row>
-    <v-row class="mt-12">
+    <v-row class="mt-12 mb-12">
       <v-col v-if="$auth.loggedIn" class="text-center">
         <h3>Check out your projects now</h3>
         <p>Welcome back, go ahead and check out your projects!</p>

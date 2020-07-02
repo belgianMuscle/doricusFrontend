@@ -60,47 +60,25 @@
       <v-text-field v-model="address" label="Address" solo></v-text-field>
 
       <v-text-field
-        v-model="builder"
-        label="Add Builder"
+        v-model="member"
+        label="Add Member by e-mail"
         :append-icon="'mdi-account-plus'"
-        @click:append="addBuilder"
+        @click:append="addMember"
         solo
       ></v-text-field>
-      <v-list v-if="builders.length > 0" color="clear" class="mb-4 ml-6 mt-n6">
-        <v-list-item color="clear" v-for="(item, index) in builders" :key="index">
+      <v-list v-if="members.length > 0" color="clear" class="mb-4 ml-6 mt-n6">
+        <v-list-item color="clear" v-for="(item, index) in members" :key="index">
           <v-list-item-action>
-            <v-btn @click="removeBuilder(index)" icon>
+            <v-btn @click="removeMember(index)" icon>
               <v-icon>mdi-account-remove</v-icon>
             </v-btn>
           </v-list-item-action>
 
           <v-list-item-content>
-            <v-list-item-title v-text="item"></v-list-item-title>
+            <v-list-item-title v-text="item.full_name + ' ( ' + item.type + ' )'"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
-
-      <v-text-field
-        v-model="customer"
-        label="Add Customer"
-        :append-icon="'mdi-account-plus-outline'"
-        @click:append="addCustomer"
-        solo
-      ></v-text-field>
-      <v-list v-if="customers.length > 0" color="clear" class="mb-4 ml-6 mt-n6">
-        <v-list-item color="clear" v-for="(item, index) in customers" :key="index">
-          <v-list-item-action>
-            <v-btn @click="removeCustomer(index)" icon>
-              <v-icon>mdi-account-remove-outline</v-icon>
-            </v-btn>
-          </v-list-item-action>
-
-          <v-list-item-content>
-            <v-list-item-title v-text="item"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-
       <v-btn type="submit" color="primary" class="mt-6 mr-4">Create</v-btn>
       <v-btn @click="clear" class="mt-6" text>cancel</v-btn>
     </v-form>
@@ -129,10 +107,8 @@ export default {
     start_date: "",
     proj_end_date: "",
     address: "",
-    builder: "",
-    customer: "",
-    builders: [],
-    customers: [],
+    member: "",
+    members: [],
     sdate: new Date().toISOString().substr(0, 10),
     edate: new Date().toISOString().substr(0, 10),
     start_date_menu: false,
@@ -159,10 +135,8 @@ export default {
       this.start_date = "";
       this.proj_end_date = "";
       this.address = "";
-      this.builder = "";
-      this.customer = "";
-      this.builders = [];
-      this.customers = [];
+      this.member = "";
+      this.members = [];
       this.sdate = new Date().toISOString().substr(0, 10);
       this.edate = new Date().toISOString().substr(0, 10);
       this.start_date_menu = false;
@@ -180,7 +154,8 @@ export default {
         address: this.address,
         start_date: this.start_date,
         proj_end_date: this.proj_end_date,
-        act_end_date: '9999-12-31'
+        act_end_date: '9999-12-31',
+        members: this.members
       }};
 
       try {
@@ -190,23 +165,24 @@ export default {
         console.log(e);
       }
     },
-    addCustomer() {
-      if (this.customer != "") {
-        this.customers.push(this.customer);
-        this.customer = "";
+    async addMember() {
+      if (this.member != "") {
+
+        const config = {
+          headers: { "content-type": "application/json" }
+        };
+
+        try {
+          let response = await this.$axios.$get("/search/members?email="+this.member, config);
+          this.members.push(response.member);
+          this.member = "";
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
-    removeCustomer(indx) {
-      this.customers.splice(indx, 1);
-    },
-    removeBuilder(indx) {
-      this.builders.splice(indx, 1);
-    },
-    addBuilder() {
-      if (this.builder != "") {
-        this.builders.push(this.builder);
-        this.builder = "";
-      }
+    removeMember(indx) {
+      this.members.splice(indx, 1);
     },
     formatDate(date) {
       if (!date) return null;

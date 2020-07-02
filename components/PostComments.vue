@@ -1,19 +1,19 @@
 <template>
-  <v-list three-line>
+  <v-list two-line>
     <template v-for="(item, index) in post.comments">
-      <v-list-item v-if="item.content" :key="index">
+      <v-list-item v-if="item.content" :key="index" class="">
         <v-list-item-content>
-          <v-list-item-subtitle v-text="item.timestamp + ' by ' + item.member_id"></v-list-item-subtitle>
+          <v-list-item-subtitle class="text-right" v-text="item.timestamp + ' by ' + item.member_id"></v-list-item-subtitle>
           <v-list-item-content v-html="item.content"></v-list-item-content>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="index < post.comments.length - 1" :key="'dividier-'+index"></v-divider>
+      <v-divider class="mt-n2" v-if="index < post.comments.length - 1" :key="'dividier-'+index"></v-divider>
     </template>
     <span v-if="post.comments.length == 0">No comments yet!</span>
-    <v-form ref="commentForm" class="ml-6">
+    <v-form ref="commentForm" class="mx-6 mb-n4">
       <v-row class="align-baseline">
-        <v-text-field v-model="comment" :counter="255" label="Comment" required></v-text-field>
-        <v-btn color="primary" class="mr-4" @click="submit">Send</v-btn>
+        <v-text-field v-model="comment" :counter="255" label="Comment" :append-icon="'mdi-send'"
+        @click:append="submit" required></v-text-field>
       </v-row>
     </v-form>
   </v-list>

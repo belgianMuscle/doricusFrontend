@@ -10,6 +10,10 @@
         <v-content class="ml-6">
           <h1>{{ project.title }}</h1>
           <span>{{ project.description }}</span>
+          <v-btn v-if="$store.state.account.type == 'ARCHITECT'"
+            class="mx-2" fab dark x-small color="teal" :to="'/edit/project/'+project.id">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
         </v-content>
       </v-img>
     </v-row>
@@ -25,11 +29,11 @@
         </v-row>
         <v-row v-if="project.topics.length > 0">
           <v-col>
-          <v-row  v-for="(topic, index) in project.topics" :key="index">
-            <v-col>
-              <ProjectPost :post="project.topics[index]" />
-            </v-col>
-          </v-row>
+            <v-row v-for="(topic, index) in project.topics" :key="index">
+              <v-col>
+                <ProjectPost :post="project.topics[index]" />
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
         <v-row v-if="project.topics.length == 0" class="ma-2">
