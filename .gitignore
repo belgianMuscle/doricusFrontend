@@ -15,6 +15,7 @@ pids
 
 
 #DEV
+nuxt.config.dev.js
 nuxt_dev.config.js
 
 #VS Code workspace
