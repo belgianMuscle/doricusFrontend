@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "dotenv": "^8.2.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {}
